@@ -22,7 +22,36 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+23区の駅の取得
+```ruby
+Karashi::Station.all_tokyo23
+#=> Array of Karashi::Station Object
+
+Karashi::Station.all_tokyo23.map{|station| station.name}
+#=> ["東京", "新橋", "品川", ... ]
+```
+
+駅の詳細情報の取得
+```ruby
+station_object = Karashi::Station.all_tokyo23[0]
+#=> #<Karashi::Station:0x000055cd51f158 ... >
+station_object.name
+#=> "東京"
+station_object.code
+#=> "1130101"
+station_object.city
+#=> "千代田区"
+```
+
+駅コードから検索
+```ruby
+station_object = Karashi::Station.find_by_code("1130101")
+#=> #<Karashi::Station:0x000055cd51f158 ... >
+station_object.name
+#=> "東京"
+station_object.city
+#=> "千代田区"
+```
 
 ## Development
 
